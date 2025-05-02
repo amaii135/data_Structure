@@ -41,6 +41,16 @@ int dequeue(QueueType *q){
 }
 
 int main(){
+    QueueType *q;
+    init_queue(q);
+
+    enqueue(q, 1);
+    enqueue(q, 2);
+    enqueue(q, 3);
+
+    printf("%d ", dequeue(q));
+    printf("%d ", dequeue(q));
+    printf("%d ", dequeue(q));
 
     return 0;
 }
