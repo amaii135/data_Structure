@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #define SIZE 5
 //Git-hub 연동완료
 //큐 구현
@@ -17,14 +18,13 @@ int is_empty(QueueType *q){
     return (q->front==q->rear);
 }
 void init_Queue(QueueType *q){
+    (QueueType*)q=malloc(sizeof(QueueType));
     q->front=-1;
     q->rear=-1;
-    (int*)q->data=malloc(sizeof(int)*SIZE);
 }
 void enqueue(QueueType *q, element e){
     if(is_full(q)){
         printf("큐 포화에러");
-        exit(1);
     }
     q->data[++(q->rear)]=e;
 };
