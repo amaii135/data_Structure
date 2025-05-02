@@ -18,9 +18,13 @@ int is_empty(QueueType *q){
     return (q->front==q->rear);
 }
 void init_queue(QueueType *q){
-    q->front=-1;
-    q->rear=-1;
-    q->data=malloc(sizeof(element)*SIZE);
+    q->front = -1;
+    q->rear = -1;
+    q->data = malloc(sizeof(element) * SIZE);
+    if (q->data == NULL) {
+        fprintf(stderr, "메모리 할당 실패\n");
+        exit(1);
+    }
 }
 void enqueue(QueueType *q, element e){
     if(is_full(q)){
