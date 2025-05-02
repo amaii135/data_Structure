@@ -18,9 +18,9 @@ int is_empty(QueueType *q){
     return (q->front==q->rear);
 }
 void init_Queue(QueueType *q){
-    (QueueType*)q=malloc(sizeof(QueueType));
     q->front=-1;
     q->rear=-1;
+    (int*)q->data=malloc(sizeof(int)*SIZE);
 }
 void enqueue(QueueType *q, element e){
     if(is_full(q)){
@@ -39,6 +39,7 @@ int dequeue(QueueType *q){
 int main(){
 
     QueueType*q;
+    (QueueType*)q=malloc(sizeof(QueueType*));
     init_Queue(q);
 
     enqueue(q, 1);
