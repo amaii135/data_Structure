@@ -5,7 +5,7 @@
 //큐 구현
 
 typedef int element;
-typedef struct{
+typedef struct {
     int front;
     int rear;
     int *data;
@@ -17,10 +17,10 @@ int is_full(QueueType *q){
 int is_empty(QueueType *q){
     return (q->front==q->rear);
 }
-void init_Queue(QueueType *q){
+void init_queue(QueueType *q){
     q->front=-1;
     q->rear=-1;
-    (int*)q->data=malloc(sizeof(int)*SIZE);
+    q->data=malloc(sizeof(element)*SIZE);
 }
 void enqueue(QueueType *q, element e){
     if(is_full(q)){
@@ -33,32 +33,10 @@ int dequeue(QueueType *q){
         printf("큐 공백에러");
         exit(1);
     }
-    return q->data[(q->front)--];
+    return q->data[++(q->front)];
 }
 
 int main(){
-
-    QueueType*q;
-    (QueueType*)q=malloc(sizeof(QueueType*));
-    init_Queue(q);
-
-    enqueue(q, 1);
-    enqueue(q, 2);
-    enqueue(q, 3);
-
-    printf("%d ", dequeue(q));
-    printf("%d ", dequeue(q));
-    printf("%d ", dequeue(q));
-
-
-
-
-
-
-
-
-
-
 
     return 0;
 }
