@@ -7,4 +7,64 @@
 
 <body>
    <h2>JavaScript공부해서 코드 올릴예정임</h2>
+    <pre>
+        //선형 큐 구현
+        //큐는 선입선출(FIFO)구조
+        //그렇기에 위치를 알려주는 변수가 두 개 필요함
+
+        typedef int element;
+        typedef struct {
+	        int front;
+        	int rear;
+        	element *data;
+        }QueueType;
+        
+        void init_Queue(QueueType *q) {
+        	q->front = -1;
+        	q->rear = -1;
+        	q->data = malloc(sizeof(element) * SIZE);
+        }
+        
+        int is_full(QueueType *q) {
+        	return(q->rear == (SIZE - 1));
+        }
+        
+        int is_empty(QueueType *q) {
+        	return(q->front == -1 && q->rear == -1);
+        }
+        
+        void enqueue(QueueType *q, element e) {
+        	if (is_full(q)) {
+        		printf("큐가 가득찼습니다!\n");
+        		return;
+        	}
+        	q->data[++q->rear] = e;
+        }
+        
+        int dequeue(QueueType *q) {
+        	if (is_empty(q)) {
+        		printf("큐 공백에러");
+        		exit(1);
+        	}
+        	return q->data[++q->front];
+        }
+        
+        int main() {
+        	QueueType* q= malloc(sizeof(QueueType));
+        	init_Queue(q);
+        
+        	enqueue(q, 1);
+        	enqueue(q, 2);
+        	enqueue(q, 3);
+        
+        	printf("%d ", dequeue(q));
+        	printf("%d ", dequeue(q));
+        	printf("%d", dequeue(q));
+    
+        	return 0;
+        }
+
+
+        
+    </pre>
 </body>
